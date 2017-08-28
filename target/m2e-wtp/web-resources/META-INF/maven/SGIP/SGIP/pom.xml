@@ -81,7 +81,6 @@
 			<scope>compile</scope>
 		</dependency>
 
-
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

@@ -1,0 +1,12 @@
+com\rme\sgip\service\EmployeeService.class
+com\rme\sgip\configuration\HibernateConfiguration.class
+com\rme\sgip\configuration\WebInitializer.class
+com\rme\sgip\model\User.class
+com\rme\sgip\controller\UserController.class
+com\rme\sgip\mb\UserLoginView.class
+com\rme\sgip\dao\EmployeeDAO.class
+com\rme\sgip\configuration\AppConfiguration.class
+com\rme\sgip\model\Employee.class
+com\rme\sgip\dao\AbstractDAO.class
+com\rme\sgip\dao\EmployeeDAOImpl.class
+com\rme\sgip\service\EmployeeServiceImpl.class
