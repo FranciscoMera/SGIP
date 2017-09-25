@@ -28,19 +28,14 @@
 .ui-layout-unit {
 	border: none;
 }
+
 </style>
 </h:head>
 
 <h:body>
 	<p:layout fullPage="true">
 		<p:layoutUnit position="north" size="50">
-			<b:navBar brand="SGIP" brandHref="#" fixed="top" inverse="true">
-				<b:navbarLinks>
-					<b:navLink value="Home" href="#"></b:navLink>
-					<b:navLink value="About" href="#"></b:navLink>
-					<b:navLink value="Contact" href="#"></b:navLink>
-				</b:navbarLinks>
-			</b:navBar>
+			Header
 		</p:layoutUnit>
 
 		<p:layoutUnit position="west" resizable="true" collapsible="true">
@@ -78,55 +73,47 @@
 
 		<p:layoutUnit position="center">
 			<h:form id="form">
-				<p:growl id="msgs" showDetail="true" />
+				<p:panel id="panel" header="Contact us" style="margin-bottom:10px;">
+					<p:messages id="messages" />
 
+					<h:panelGrid columns="3" cellpadding="5">
 
-				<p:dataTable var="car" value="#{dtBasicView.cars}" widgetVar="carsTable" rows="7"
-					emptyMessage="No cars found with given criteria" 
-					filteredValue="#{dtBasicView.filteredCars}"
-					paginator="true"
-					paginatorPosition="bottom"
-					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					rowsPerPageTemplate="5,10,15">
+						<p:outputLabel for="text1" value="Basic:" />
+						<p:selectOneMenu required="true">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+							<f:selectItem itemLabel="PS4" itemValue="PS4" />
+							<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+						</p:selectOneMenu>
+						<p:message for="text1" />
 
-					<f:facet name="header">
-						<p:outputPanel>
-							<h:outputText value="Search all fields:" />
-							<p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()"
-								style="width:150px" placeholder="Enter keyword" />
-						</p:outputPanel>
-					</f:facet>
-					<f:facet name="header">
-		            Datos de X
-		            <p:commandButton align="right" icon="fa fa-plus"
-							float="right" styleClass="ui-priority-primary" />
-					</f:facet>
-					<p:column headerText="Id">
-						<h:outputText value="#{car.id}" />
-					</p:column>
-					<p:column headerText="Year">
-						<h:outputText value="#{car.randomYear}" />
-					</p:column>
-					<p:column headerText="Brand">
-						<h:outputText value="#{car.randomBrand}" />
-					</p:column>
-					<p:column headerText="Color">
-						<h:outputText value="#{car.randomColor}" />
-					</p:column>
-					<p:column headerText="In/Out">
-						<p:commandButton icon="ui-icon-search">
-						</p:commandButton>
-					</p:column>
-					<p:column headerText="Edit">
-						<p:commandButton icon="fa fa-refresh"
-							styleClass="ui-priority-primary">
-						</p:commandButton>
-					</p:column>
-					<p:column headerText="Delete">
-						<p:commandButton icon="fa fa-fw fa-remove">
-						</p:commandButton>
-					</p:column>
-				</p:dataTable>
+						<p:outputLabel for="text1" value="Nombre:" />
+						<p:inputText id="text1" value="#{resetInputView.text1}"
+							required="true" label="Firstname">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="text1" />
+
+						<p:outputLabel for="text2" value="Edad:" />
+						<p:inputText id="text2" value="#{resetInputView.text2}"
+							required="true" label="SurAge">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="text2" />
+
+						<p:outputLabel for="text3" value="Mensaje:" />
+						<p:inputTextarea id="text3" value="#{resetInputView.text3}"
+							required="true" label="SurMessage" 
+							style="width:100px;height:100px; text-align: right;"/>
+						<p:message for="text2" />
+					</h:panelGrid>
+				</p:panel>
+				<p:commandButton value="Submit" update="panel"
+					actionListener="#{resetInputView.save}" style="margin-right:20px;" />
+				<p:commandButton value="Reset Tag" update="panel" process="@this"
+					style="margin-right:20px;" icon="ui-icon-check">
+					<p:resetInput target="panel" />
+				</p:commandButton>
 			</h:form>
 		</p:layoutUnit>
 

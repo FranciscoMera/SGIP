@@ -17,6 +17,8 @@ public class BasicView implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private List<Car> cars;
+	
+	private List<Car> filteredCars;
 
 	@ManagedProperty("#{carService}")
 	private CarService service;
@@ -33,4 +35,13 @@ public class BasicView implements Serializable {
 	public void setService(CarService service) {
 		this.service = service;
 	}
+
+	public List<Car> getFilteredCars() {
+		return filteredCars;
+	}
+
+	public void setFilteredCars(List<Car> filteredCars) {
+		this.filteredCars = filteredCars;
+	}
+
 }
