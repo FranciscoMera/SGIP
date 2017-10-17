@@ -13,40 +13,70 @@ import com.rme.sgip.model.Employee;
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
-	@Autowired
-	private EmployeeDAO dao;
+    @Autowired
+    private EmployeeDAO dao;
 
-	public Employee findById(int id) {
-		return dao.findById(id);
-	}
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Employee findById(int id) {
+        return dao.findById(id);
+    }
 
-	public void saveEmployee(Employee employee) {
-		dao.saveEmployee(employee);
-	}
+    /**
+     *
+     * @param employee
+     */
+    @Override
+    public void saveEmployee(Employee employee) {
+        dao.saveEmployee(employee);
+    }
 
-	public void updateEmployee(Employee employee) {
-		Employee entity = dao.findById(employee.getId());
-		if (entity != null) {
-			entity.setName(employee.getName());
-			entity.setSalary(employee.getSalary());
-			entity.setSsn(employee.getSsn());
-		}
-	}
+    /**
+     *
+     * @param employee
+     */
+    @Override
+    public void updateEmployee(Employee employee) {
+        Employee entity = dao.findById(employee.getId());
+        if (entity != null) {
+            entity.setName(employee.getName());
+            entity.setSalary(employee.getSalary());
+            entity.setSsn(employee.getSsn());
+        }
+    }
 
-	public void deleteEmployeeBySsn(String ssn) {
-		dao.deleteEmployeeBySsn(ssn);
-	}
+    /**
+     *
+     * @param ssn
+     */
+    @Override
+    public void deleteEmployeeBySsn(String ssn) {
+        dao.deleteEmployeeBySsn(ssn);
+    }
+    
+    @Override
+    public List<Employee> findAllEmployees() {
+        return dao.findAllEmployees();
+    }
 
-	public List<Employee> findAllEmployees() {
-		return dao.findAllEmployees();
-	}
+    @Override
+    public Employee findEmployeeBySsn(String ssn) {
+        return dao.findEmployeeBySsn(ssn);
+    }
 
-	public Employee findEmployeeBySsn(String ssn) {
-		return dao.findEmployeeBySsn(ssn);
-	}
-
-	public boolean isEmployeeSsnUnique(Integer id, String ssn) {
-		Employee employee = findEmployeeBySsn(ssn);
-		return (employee == null || ((id != null) && (employee.getId() == id)));
-	}
+    /**
+     *
+     * @param id
+     * @param ssn
+     * @return
+     */
+    @Override
+    public boolean isEmployeeSsnUnique(Integer id, String ssn) {
+        Employee employee = findEmployeeBySsn(ssn);
+        return (employee == null || ((id != null) && (employee.getId() == id)));
+    }
 }

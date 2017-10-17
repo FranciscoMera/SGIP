@@ -11,7 +11,7 @@ import com.rme.sgip.model.Employee;
 
 @Repository("employeeDao")
 public class EmployeeDAOImpl extends AbstractDAO<Integer, Employee> implements EmployeeDAO {
-
+    
     /**
      *
      * @param id
@@ -46,7 +46,6 @@ public class EmployeeDAOImpl extends AbstractDAO<Integer, Employee> implements E
      *
      * @return
      */
-    @SuppressWarnings("unchecked")
     @Override
     public List<Employee> findAllEmployees() {
         Criteria criteria = createEntityCriteria();

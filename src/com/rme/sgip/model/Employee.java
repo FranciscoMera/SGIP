@@ -1,5 +1,6 @@
 package com.rme.sgip.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class Employee implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +35,7 @@ public class Employee {
 	@NotEmpty
 	@Column(name = "SSN", unique = true, nullable = false)
 	private String ssn;
-
+        
 	public int getId() {
 		return id;
 	}
